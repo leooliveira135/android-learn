@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Twitter Search</string>
+    <string name="aviso">Você foi mencionado!</string>
+    <string name="titulo">mencionou você</string>
+</resources>
