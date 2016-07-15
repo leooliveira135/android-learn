@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/prefs">
+        <CheckBoxPreference
+            android:key="modo_viagem"
+            android:summary="@string/viagem_modo_sumario"
+            android:title="@string/viagem_modo"/>
+        <EditTextPreference
+            android:dialogTitle="@string/info_valor"
+            android:key="valor_limite"
+            android:defaultValue="80"
+            android:summary="@string/alerta_gasto_sumario"
+            android:title="@string/alerta_gasto"/>
+    </PreferenceCategory>
+</PreferenceScreen>

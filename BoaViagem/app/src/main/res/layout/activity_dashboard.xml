@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_bar">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/app_name"
+        android:id="@+id/txtNome"
+        android:textColor="@color/text"
+        android:layout_gravity="center_horizontal" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_app">
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="140dp"
+            android:id="@+id/ivNovoGasto"
+            android:src="@drawable/novo_gasto"
+            android:clickable="true"
+            android:onClick="selecionarOpcao"
+            android:layout_marginTop="30dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/novo_gasto"
+            android:id="@+id/txtNovoGasto"
+            android:textColor="@color/text"
+            android:textStyle="bold"
+            android:layout_below="@+id/ivNovoGasto"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="48dp"
+            android:layout_marginStart="48dp"/>
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="140dp"
+            android:id="@+id/ivNovaViagem"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/ivNovoGasto"
+            android:layout_toEndOf="@+id/ivNovoGasto"
+            android:src="@drawable/nova_viagem"
+            android:clickable="true"
+            android:onClick="selecionarOpcao"
+            android:layout_marginTop="30dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/nova_viagens"
+            android:id="@+id/txtNovaViagem"
+            android:layout_below="@+id/ivNovaViagem"
+            android:layout_toRightOf="@+id/ivNovoGasto"
+            android:layout_toEndOf="@+id/ivNovoGasto"
+            android:textStyle="bold"
+            android:textColor="@color/text"
+            android:layout_marginLeft="48dp"
+            android:layout_marginStart="48dp"/>
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="140dp"
+            android:id="@+id/ivMinhasViagens"
+            android:src="@drawable/minhas_viagens"
+            android:clickable="true"
+            android:layout_below="@+id/txtNovoGasto"
+            android:layout_toLeftOf="@+id/txtNovaViagem"
+            android:layout_toStartOf="@+id/txtNovaViagem"
+            android:layout_marginTop="58dp"
+            android:onClick="selecionarOpcao"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/minhas_viagens"
+            android:id="@+id/txtMinhasViagens"
+            android:textColor="@color/text"
+            android:textStyle="bold"
+            android:layout_below="@+id/ivMinhasViagens"
+            android:layout_alignLeft="@+id/txtNovoGasto"
+            android:layout_alignStart="@+id/txtNovoGasto" />
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="140dp"
+            android:id="@+id/ivConfig"
+            android:layout_alignTop="@+id/ivMinhasViagens"
+            android:layout_toEndOf="@+id/ivMinhasViagens"
+            android:src="@drawable/configuracoes"
+            android:layout_toRightOf="@+id/ivMinhasViagens"
+            android:clickable="true"
+            android:onClick="selecionarOpcao"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/config"
+            android:id="@+id/txtConfig"
+            android:textStyle="bold"
+            android:textColor="@color/text"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/ivConfig"
+            android:layout_toRightOf="@+id/ivMinhasViagens"
+            android:layout_toEndOf="@+id/ivMinhasViagens" />
+    </RelativeLayout>
+</LinearLayout>

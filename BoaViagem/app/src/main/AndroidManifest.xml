@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.leonardooliveira.boaviagem">
+
+    <uses-sdk android:minSdkVersion="16"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".activity.BoaViagemActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.DashboardActivity"/>
+        <activity android:name=".activity.viagem.ViagemActivity"/>
+        <activity android:name=".activity.gasto.GastoActivity"/>
+        <activity android:name=".activity.viagem.ViagemListActivity"/>
+        <activity android:name=".activity.gasto.GastoListActivity"/>
+        <activity android:name=".activity.ConfiguracoesActivity"/>
+        <provider
+            android:name=".provider.BoaViagemProvider"
+            android:authorities="com.example.leonardooliveira.boaviagem.provider">
+            <path-permission
+                android:path="viagem"
+                android:permission="com.example.leonardooliveira.boaviagem.permission.ALL"/>
+        </provider>
+    </application>
+
+</manifest>

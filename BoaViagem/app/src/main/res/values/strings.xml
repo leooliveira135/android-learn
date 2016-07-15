@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">Boa Viagem</string>
+    <string name="usuario">Usuário</string>
+    <string name="senha">Senha</string>
+    <string name="login">Entrar</string>
+    <string name="erro_login">Usuário ou senha inválidos</string>
+    <string name="novo_gasto">Novo Gasto</string>
+    <string name="nova_viagens">Nova Viagem</string>
+    <string name="minhas_viagens">Minhas Viagens</string>
+    <string name="config">Configurações</string>
+    <string name="destino">Destino</string>
+    <string name="viagem_tipo">Tipo da Viagem</string>
+    <string name="lazer_viagem">Lazer</string>
+    <string name="negocio_viagem">Negócios</string>
+    <string name="dt_chegada">Data de chegada</string>
+    <string name="dt_partida">Data de partida</string>
+    <string name="orcamento">Orçamento</string>
+    <string name="qt_pessoas">Quantidade de pessoas</string>
+    <string name="criar_viagem">Criar nova viagem</string>
+    <string name="tipo_gasto">Tipo</string>
+    <string name="valor">Valor</string>
+    <string name="data">Data</string>
+    <string name="desc">Descrição</string>
+    <string name="place">Local</string>
+    <string name="gastei">Gastei!</string>
+    <string name="selecione">Selecione</string>
+    <string name="sair">Sair</string>
+    <string name="remove_viagem">Remover viagem</string>
+    <string name="remover">Remover</string>
+    <string name="edit">Editar</string>
+    <string name="gasto_realizado">Gastos Realizados</string>
+    <string name="opcao">Opções</string>
+    <string name="confirma_excluir">Deseja realmente remover a viagem?</string>
+    <string name="op_sim">Sim</string>
+    <string name="op_nao">Não</string>
+    <string name="prefs">Preferências</string>
+    <string name="viagem_modo">Modo Viagem</string>
+    <string name="viagem_modo_sumario">Determine a viagem ativa com base na data atual</string>
+    <string name="alerta_gasto">Alerta de gastos</string>
+    <string name="alerta_gasto_sumario">Notifica quando os gastos ultrapassarem o percentual informado</string>
+    <string name="info_valor">Informe o valor limite (em %)</string>
+    <string name="conect">Manter conectado</string>
+    <string name="registro_salvo">A viagem foi salva com sucesso!</string>
+    <string name="erro_salvar">Erro ao salvar a viagem</string>
+
+    <string-array name="categoria_gasto">
+        <item>Alimentação</item>
+        <item>Combustível</item>
+        <item>Transporte</item>
+        <item>Hospedagem</item>
+        <item>Outros</item>
+    </string-array>
+</resources>
