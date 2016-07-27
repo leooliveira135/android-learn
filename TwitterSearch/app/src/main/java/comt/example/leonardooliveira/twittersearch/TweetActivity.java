@@ -13,7 +13,7 @@ public class TweetActivity extends AppCompatActivity {
     public static final String USER = "usuario";
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tweet);
 

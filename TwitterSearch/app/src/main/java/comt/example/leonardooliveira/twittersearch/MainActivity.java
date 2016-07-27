@@ -43,9 +43,7 @@ public class MainActivity extends AppCompatActivity {
         if(accessToken == null){
             Toast.makeText(this, "Token não disponível", Toast.LENGTH_LONG).show();
         }
-        else {
-            new TwitterTask().execute(filtro);
-        }
+        new TwitterTask().execute(filtro);
     }
 
     private class AutenticacaoTask extends AsyncTask<Void, Void, Void> {
@@ -93,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                 String url = Uri.parse(twitterUrl + filtro).toString();
                 String conteudo = HttpRequest.get(url).authorization("Bearer " + accessToken).body();
                 JSONObject jsonObject = new JSONObject(conteudo);
-                JSONArray resultados = jsonObject.getJSONArray("statuses");
+                JSONArray resultados = jsonObject.optJSONArray("statuses");
 
                 String tweets[] = new String[resultados.length()];
                 for (int i=0; i < resultados.length(); i++){
@@ -106,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
             }
             catch(Exception e){
                 Log.e(getPackageName(), e.getMessage(), e);
-                throw new RuntimeException(e);
+                return null;
             }
         }
 
