@@ -2,7 +2,6 @@ package com.example.leonardooliveira.boaviagem.activity;
 
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
-import android.view.View;
 
 import com.example.leonardooliveira.boaviagem.R;
 

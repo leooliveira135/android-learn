@@ -14,11 +14,11 @@ import android.widget.AdapterView;
 import android.widget.ProgressBar;
 import android.widget.SimpleAdapter;
 
+import com.example.leonardooliveira.boaviagem.R;
 import com.example.leonardooliveira.boaviagem.activity.gasto.GastoActivity;
 import com.example.leonardooliveira.boaviagem.activity.gasto.GastoListActivity;
-import com.example.leonardooliveira.boaviagem.model.Constantes;
 import com.example.leonardooliveira.boaviagem.dao.DatabaseHelper;
-import com.example.leonardooliveira.boaviagem.R;
+import com.example.leonardooliveira.boaviagem.model.Constantes;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

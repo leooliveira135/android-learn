@@ -10,7 +10,11 @@ import android.support.annotation.Nullable;
 
 import com.example.leonardooliveira.boaviagem.dao.DatabaseHelper;
 
-import static com.example.leonardooliveira.boaviagem.provider.BoaViagemContract.*;
+import static com.example.leonardooliveira.boaviagem.provider.BoaViagemContract.AUTHORITY;
+import static com.example.leonardooliveira.boaviagem.provider.BoaViagemContract.GASTO_PATH;
+import static com.example.leonardooliveira.boaviagem.provider.BoaViagemContract.Gasto;
+import static com.example.leonardooliveira.boaviagem.provider.BoaViagemContract.VIAGEM_PATH;
+import static com.example.leonardooliveira.boaviagem.provider.BoaViagemContract.Viagem;
 
 /**
  * Created by Leonardo Oliveira on 03/07/2016.

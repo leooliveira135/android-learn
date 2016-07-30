@@ -1,5 +1,6 @@
 package com.example.leonardooliveira.boaviagem.dao;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -59,5 +60,32 @@ public class BoaViagemDAO {
         );
 
         return viagem;
+    }
+
+    public long inserir(Viagem viagem){
+        ContentValues values = new ContentValues();
+
+        values.put(DatabaseHelper.Viagem.DESTINO, viagem.getDestino());
+        values.put(DatabaseHelper.Viagem.TIPO_VIAGEM, viagem.getTipoViagem());
+        values.put(DatabaseHelper.Viagem.DT_CHEGADA, String.valueOf(viagem.getDataChegada()));
+        values.put(DatabaseHelper.Viagem.DT_PARTIDA, String.valueOf(viagem.getDataPartida()));
+        values.put(DatabaseHelper.Viagem.ORCAMENTO, viagem.getOrcamento());
+        values.put(DatabaseHelper.Viagem.QTD_PESSOAS, viagem.getQtdPessoas());
+
+        return getDb().insert(DatabaseHelper.Viagem.TABELA, null, values);
+    }
+
+    public long atualizar(Viagem viagem){
+        ContentValues values = new ContentValues();
+
+        values.put(DatabaseHelper.Viagem.DESTINO, viagem.getDestino());
+        values.put(DatabaseHelper.Viagem.TIPO_VIAGEM, viagem.getTipoViagem());
+        values.put(DatabaseHelper.Viagem.DT_CHEGADA, String.valueOf(viagem.getDataChegada()));
+        values.put(DatabaseHelper.Viagem.DT_PARTIDA, String.valueOf(viagem.getDataPartida()));
+        values.put(DatabaseHelper.Viagem.ORCAMENTO, viagem.getOrcamento());
+        values.put(DatabaseHelper.Viagem.QTD_PESSOAS, viagem.getQtdPessoas());
+
+        return getDb().update(DatabaseHelper.Viagem.TABELA, values,
+                DatabaseHelper.Viagem._ID + " = ?", new String[]{viagem.getId().toString()});
     }
 }

@@ -2,10 +2,11 @@ package com.example.leonardooliveira.boaviagem.activity.viagem;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.content.ContentValues;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -18,14 +19,21 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.example.leonardooliveira.boaviagem.activity.gasto.GastoActivity;
-import com.example.leonardooliveira.boaviagem.model.Constantes;
-import com.example.leonardooliveira.boaviagem.dao.DatabaseHelper;
 import com.example.leonardooliveira.boaviagem.R;
+import com.example.leonardooliveira.boaviagem.activity.gasto.GastoActivity;
+import com.example.leonardooliveira.boaviagem.calendar.CalendarService;
+import com.example.leonardooliveira.boaviagem.dao.BoaViagemDAO;
+import com.example.leonardooliveira.boaviagem.dao.DatabaseHelper;
+import com.example.leonardooliveira.boaviagem.model.Constantes;
+import com.example.leonardooliveira.boaviagem.model.Viagem;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+
+import static com.example.leonardooliveira.boaviagem.model.Constantes.NOME_CONTA;
+import static com.example.leonardooliveira.boaviagem.model.Constantes.PREFERENCIAS;
+import static com.example.leonardooliveira.boaviagem.model.Constantes.TOKEN_ACESSO;
 
 /**
  * Created by Leonardo Oliveira on 30/06/2016.
@@ -47,6 +55,8 @@ public class ViagemActivity extends AppCompatActivity {
     private String id;
     private String SELECT_VIAGEM = "SELECT TIPO_VIAGEM, DESTINO, DT_CHEGADA, DT_PARTIDA, QTD_PESSOAS, ORCAMENTO" +
             "FROM VIAGEM WHERE _ID = ?";
+    private CalendarService calendarService;
+    private BoaViagemDAO dao;
 
     @Override
     protected void onCreate(Bundle savedInstanceBundle) {
@@ -74,6 +84,16 @@ public class ViagemActivity extends AppCompatActivity {
         if (id != null){
             prepararEdicao();
         }
+
+        calendarService = criarCalendarService();
+    }
+
+    private CalendarService criarCalendarService(){
+        SharedPreferences preferences = getSharedPreferences(PREFERENCIAS, MODE_PRIVATE);
+        String nomeConta = preferences.getString(NOME_CONTA, null);
+        String tokenAcesso = preferences.getString(TOKEN_ACESSO, null);
+
+        return new CalendarService(nomeConta, tokenAcesso);
     }
 
     public void prepararEdicao(){
@@ -106,36 +126,45 @@ public class ViagemActivity extends AppCompatActivity {
     }
 
     public void salvarViagem(View v){
-        SQLiteDatabase db = databaseHelper.getWritableDatabase();
-
-        ContentValues values = new ContentValues();
-        values.put("destino", edDestino.getText().toString());
-        values.put("dt_chegada", dataChegada.getTime());
-        values.put("dt_partida", dataPartida.getTime());
-        values.put("orcamento", edOrcamento.getText().toString());
-        values.put("qtd_pessoas", edQtdPessoas.getText().toString());
+        Viagem viagem = new Viagem();
+        viagem.setDestino(edDestino.getText().toString());
+        viagem.setDataChegada(dataChegada);
+        viagem.setDataPartida(dataPartida);
+        viagem.setOrcamento(Double.valueOf(edOrcamento.getText().toString()));
+        viagem.setQtdPessoas(Integer.valueOf(edQtdPessoas.getText().toString()));
 
         int tipo = radioGroup.getCheckedRadioButtonId();
         if(tipo == R.id.rbLazer){
-            values.put("tipo_viagem", Constantes.VIAGEM_LAZER);
+            viagem.setTipoViagem(Constantes.VIAGEM_LAZER);
         }
         else{
-            values.put("tipo_viagem", Constantes.VIAGEM_NEGOCIOS);
+            viagem.setTipoViagem(Constantes.VIAGEM_NEGOCIOS);
         }
 
-        long resultado = db.insert("viagem", null, values);
+        long resultado;
+        if(id.equals(-1)){
+            resultado = dao.inserir(viagem);
+            new Task().execute(viagem);
+        }
+        else{
+            resultado = dao.atualizar(viagem);
+        }
+
         if(resultado != -1){
             Toast.makeText(this, getString(R.string.registro_salvo), Toast.LENGTH_LONG).show();
         }
         else{
             Toast.makeText(this, getString(R.string.erro_login), Toast.LENGTH_LONG).show();
         }
+    }
 
-        if(id == null){
-            resultado = db.insert("viagem", null, values);
-        }
-        else{
-            resultado = db.update("viagem", values, "_id=?", new String[]{id});
+    private class Task extends AsyncTask<Viagem, Void, Void>{
+
+        @Override
+        protected Void doInBackground(Viagem... viagems) {
+            Viagem viagem = viagems[0];
+            calendarService.criarEvento(viagem);
+            return null;
         }
     }
 

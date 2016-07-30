@@ -42,6 +42,8 @@
     <string name="conect">Manter conectado</string>
     <string name="registro_salvo">A viagem foi salva com sucesso!</string>
     <string name="erro_salvar">Erro ao salvar a viagem</string>
+    <string name="conta_inexistente">Conta inexistente. Tente novamente!</string>
+    <string name="erro_autenticacao">Erro de autenticação</string>
 
     <string-array name="categoria_gasto">
         <item>Alimentação</item>
